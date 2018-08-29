@@ -1,0 +1,84 @@
+{
+  "id": "c98d39cf-0689-4c32-8ec4-223f5dcd78e2",
+  "timestamp": "2018-08-29T15:12:11.045Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "tell me BBC news about technology in Hong Kong",
+    "action": "news.search",
+    "actionIncomplete": false,
+    "parameters": {
+      "keyword": "",
+      "date-time": "",
+      "category": "technology",
+      "source": "The News",
+      "sort": "",
+      "geo-country": "",
+      "geo-city": "Hong Kong",
+      "source1": ""
+    },
+    "contexts": [
+      {
+        "name": "newssearch-followup",
+        "parameters": {
+          "date-time.original": "",
+          "geo-city": "Hong Kong",
+          "source.original": "news",
+          "date-time": "",
+          "keyword.original": "",
+          "source1": "",
+          "sort": "",
+          "source": "The News",
+          "category.original": "technology",
+          "geo-country": "",
+          "geo-country.original": "",
+          "source1.original": "",
+          "geo-city.original": "Hong Kong",
+          "category": "technology",
+          "keyword": "",
+          "sort.original": ""
+        },
+        "lifespan": 2
+      },
+      {
+        "name": "news-search",
+        "parameters": {
+          "date-time.original": "",
+          "geo-city": "Hong Kong",
+          "source.original": "news",
+          "date-time": "",
+          "keyword.original": "",
+          "source1": "",
+          "sort": "",
+          "source": "The News",
+          "category.original": "technology",
+          "geo-country": "",
+          "geo-country.original": "",
+          "source1.original": "",
+          "geo-city.original": "Hong Kong",
+          "category": "technology",
+          "keyword": "",
+          "sort.original": ""
+        },
+        "lifespan": 3
+      }
+    ],
+    "metadata": {
+      "intentId": "fb7f6475-b45e-4441-b8d7-30b99a558828",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "isFallbackIntent": "false",
+      "intentName": "news.search"
+    },
+    "fulfillment": {
+      "speech": "",
+      "messages": []
+    },
+    "score": 0.75
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "2f34efa0-151a-f52c-9907-d753b16ed7ae"
+}
