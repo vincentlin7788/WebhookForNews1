@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vincentlin7788/WebhookForMovieDB.git"
+    "url": "git+https://github.com/vincentlin7788/WebhookForNews.git"
   },
   "bugs": {
-    "url": "https://github.com/vincentlin7788/WebhookForMovieDB/issues"
+    "url": "https://github.com/vincentlin7788/WebhookForNews/issues"
   },
-  "homepage": "https://github.com/vincentlin7788/WebhookForMovieDB#readme"
+  "homepage": "https://github.com/vincentlin7788/WebhookForNews#readme"
 }
