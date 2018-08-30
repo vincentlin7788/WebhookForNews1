@@ -58,7 +58,7 @@ server.post('/get-movie-details', (req, res) => {
         });
     });
 	//--------------------
-	} else {
+	} else if (dia_action = "action.movie") {
 	
 	
 	
