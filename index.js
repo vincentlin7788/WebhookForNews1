@@ -14,16 +14,20 @@ server.use(bodyParser.urlencoded({
 server.use(bodyParser.json());
 
 server.post('/get-movie-details', (req, res) => {
-    const category = req.body.result.parameters.category
-	console.log(category)
+    const category = req.body.result.parameters.category;
+	console.log(category);
     //const geoCountry = req.body.result.contexts[0].parameters.geo-country.original
-    const geoCountry = req.body.result.parameters.geoCountry
-	console.log(geoCountry)
+    const geoCountry = req.body.result.parameters["geo-country"];
+	console.log(geoCountry);
+	const countrymap = {"United States of America":"us","Germany":"de","China":"cn","United Kingdom of Great Britain and Northern Ireland":"GB"};
+	const geoCountryCode = countrymap[geoCountry];
+	
+	console.log(geoCountryCode);
     //const country = dlv(countryDataByName, `${geoCountry}.alpha2`, 'us')
 
 
     //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
-    const reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?country=${geoCountry}&category=${category}&apikey=${API_KEY}`);
+    const reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?country=${geoCountryCode}&category=${category}&apikey=${API_KEY}`);
     http.get(reqUrl, (responseFromAPI) => {
         let completeResponse = '';
         responseFromAPI.on('data', (chunk) => {
@@ -32,7 +36,7 @@ server.post('/get-movie-details', (req, res) => {
         responseFromAPI.on('end', () => {
             const newsResp = JSON.parse(completeResponse);
             let dataToSend = geoCountry === 'MS' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
-            console.log(newsResp);
+            console.log("success have article");
 			dataToSend = `${newsResp.articles[1].title}\n ${newsResp.articles[1].description}\n URLs Address is:\n ${newsResp.articles[1].url}`;
 			console.log()
             return res.json({

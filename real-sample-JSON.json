@@ -1,0 +1,84 @@
+{
+  "id": "59015481-fc1a-4b18-8d62-8ed1444517c6",
+  "timestamp": "2018-08-30T08:35:07.682Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "tell me about business news in uK",
+    "action": "news.search",
+    "actionIncomplete": false,
+    "parameters": {
+      "keyword": "",
+      "date-time": "",
+      "category": "business",
+      "source": "The News",
+      "sort": "",
+      "geo-country": "United Kingdom of Great Britain and Northern Ireland",
+      "geo-city": "",
+      "source1": ""
+    },
+    "contexts": [
+      {
+        "name": "newssearch-followup",
+        "parameters": {
+          "date-time.original": "",
+          "geo-city": "",
+          "source.original": "news",
+          "date-time": "",
+          "keyword.original": "",
+          "source1": "",
+          "sort": "",
+          "source": "The News",
+          "category.original": "business",
+          "geo-country": "United Kingdom of Great Britain and Northern Ireland",
+          "geo-country.original": "uK",
+          "source1.original": "",
+          "geo-city.original": "",
+          "category": "business",
+          "keyword": "",
+          "sort.original": ""
+        },
+        "lifespan": 2
+      },
+      {
+        "name": "news-search",
+        "parameters": {
+          "date-time.original": "",
+          "geo-city": "",
+          "source.original": "news",
+          "date-time": "",
+          "keyword.original": "",
+          "source1": "",
+          "sort": "",
+          "source": "The News",
+          "category.original": "business",
+          "geo-country": "United Kingdom of Great Britain and Northern Ireland",
+          "geo-country.original": "uK",
+          "source1.original": "",
+          "geo-city.original": "",
+          "category": "business",
+          "keyword": "",
+          "sort.original": ""
+        },
+        "lifespan": 3
+      }
+    ],
+    "metadata": {
+      "intentId": "fb7f6475-b45e-4441-b8d7-30b99a558828",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "isFallbackIntent": "false",
+      "intentName": "news.search"
+    },
+    "fulfillment": {
+      "speech": "",
+      "messages": []
+    },
+    "score": 0.8899999856948853
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "0d08454e-d7d3-af72-787d-f7622144f467"
+}
