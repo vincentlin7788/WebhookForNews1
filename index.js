@@ -14,8 +14,10 @@ server.use(bodyParser.json());
 
 server.post('/get-movie-details', (req, res) => {
     const category = req.body.result.parameters.category
+	console.log(category)
     //const geoCountry = req.body.result.contexts[0].parameters.geo-country.original
     const geoCountry = req.body.result.parameters.geoCountry
+	console.log(geoCountry)
     //const country = dlv(countryDataByName, `${geoCountry}.alpha2`, 'us')
 
 
@@ -29,7 +31,7 @@ server.post('/get-movie-details', (req, res) => {
         responseFromAPI.on('end', () => {
             const newsResp = JSON.parse(completeResponse);
             //let dataToSend = movieToSearch === 'The Godfather' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
-            dataToSend = `${newsResp.articles[0].title}\n ${newsResp.articles[0].description}\n URLs Address is:\n ${newsResp.articles[0].url}`;
+            //dataToSend = `${newsResp.articles[0].title}\n ${newsResp.articles[0].description}\n URLs Address is:\n ${newsResp.articles[0].url}`;
 
             return res.json({
                 speech: dataToSend,
