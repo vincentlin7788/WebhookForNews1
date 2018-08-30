@@ -14,6 +14,11 @@ server.use(bodyParser.urlencoded({
 server.use(bodyParser.json());
 
 server.post('/get-movie-details', (req, res) => {
+	const dia_action = req.body.result.action;
+	
+	
+	if (dia_action = "news.search") {
+		
     const category = req.body.result.parameters.category;
 	console.log(category);
     //const geoCountry = req.body.result.contexts[0].parameters.geo-country.original
@@ -52,6 +57,39 @@ server.post('/get-movie-details', (req, res) => {
             source: 'get-movie-details'
         });
     });
+	//--------------------
+	} else {
+	
+	
+	
+	const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
+    const reqUrl = encodeURI(`http://www.omdbapi.com/?t=${movieToSearch}&apikey=67358f7e`);
+    http.get(reqUrl, (responseFromAPI) => {
+        let completeResponse = '';
+        responseFromAPI.on('data', (chunk) => {
+            completeResponse += chunk;
+        });
+        responseFromAPI.on('end', () => {
+            const movie = JSON.parse(completeResponse);
+            let dataToSend = movieToSearch === 'The Godfather' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
+            dataToSend += `${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`;
+
+            return res.json({
+                speech: dataToSend,
+                displayText: dataToSend,
+                source: 'get-movie-details'
+            });
+        });
+    }, (error) => {
+        return res.json({
+            speech: 'Something went wrong!',
+            displayText: 'Something went wrong!',
+            source: 'get-movie-details'
+        });
+    });
+	//----------------
+		
+	};
 });
 
 server.listen((process.env.PORT || 8000), () => {
