@@ -2,7 +2,8 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const https = require('https');
+//const https = require('https');
+const http = require('http');
 const API_KEY = require('./apiKey');
 
 const server = express();
@@ -22,17 +23,18 @@ server.post('/get-movie-details', (req, res) => {
 
 
     //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
-    const reqUrl = encodeURI(`https://newsapi.org/v2/top-headlines?country=${geoCountry}&category=${category}&apikey=${API_KEY}`);
-    https.get(reqUrl, (responseFromAPI) => {
+    const reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?country=${geoCountry}&category=${category}&apikey=${API_KEY}`);
+    http.get(reqUrl, (responseFromAPI) => {
         let completeResponse = '';
         responseFromAPI.on('data', (chunk) => {
             completeResponse += chunk;
         });
         responseFromAPI.on('end', () => {
             const newsResp = JSON.parse(completeResponse);
-            //let dataToSend = movieToSearch === 'The Godfather' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
-            //dataToSend = `${newsResp.articles[0].title}\n ${newsResp.articles[0].description}\n URLs Address is:\n ${newsResp.articles[0].url}`;
-
+            let dataToSend = geoCountry === 'MS' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
+            console.log(newsResp);
+			dataToSend = `${newsResp.articles[1].title}\n ${newsResp.articles[1].description}\n URLs Address is:\n ${newsResp.articles[1].url}`;
+			console.log()
             return res.json({
                 speech: dataToSend,
                 displayText: dataToSend,
