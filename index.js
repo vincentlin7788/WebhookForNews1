@@ -89,6 +89,8 @@ server.post('/get-movie-details', (req, res) => {
     });
 	//----------------
 		
+	} else {
+    console.log("nothing to show");
 	};
 });
 
