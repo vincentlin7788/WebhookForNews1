@@ -45,9 +45,9 @@ server.post('/get-movie-details', (req, res) => {
 			let str1 = "";
 			let dataToSend2 = "";
 			let dataToSend3 = "";
-			dataToSend1 = `${newsResp.articles[0].title}\n ${newsResp.articles[0].description}\n URLs Address is:\n ${newsResp.articles[0].url}`;
-			dataToSend2 = `${newsResp.articles[1].title}\n ${newsResp.articles[1].description}\n URLs Address is:\n ${newsResp.articles[1].url}`;
-			dataToSend3 = `${newsResp.articles[2].title}\n ${newsResp.articles[2].description}\n URLs Address is:\n ${newsResp.articles[2].url}`;
+			dataToSend1 = `1. ${newsResp.articles[0].title}\n ${newsResp.articles[0].description}\n URLs Address is:\n ${newsResp.articles[0].url}\n\n`;
+			dataToSend2 = `2. ${newsResp.articles[1].title}\n ${newsResp.articles[1].description}\n URLs Address is:\n ${newsResp.articles[1].url}\n\n`;
+			dataToSend3 = `3. ${newsResp.articles[2].title}\n ${newsResp.articles[2].description}\n URLs Address is:\n ${newsResp.articles[2].url}\n\n`;
 			str1 = dataToSend1 + dataToSend2 + dataToSend3;
 			console.log(str1)
             return res.json({
