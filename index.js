@@ -40,18 +40,19 @@ server.post('/get-movie-details', (req, res) => {
         });
         responseFromAPI.on('end', () => {
             const newsResp = JSON.parse(completeResponse);
-            let dataToSend = geoCountry === 'MS' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
+            let dataToSend1 = geoCountry === 'MS' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
             //console.log("success have article");
 			let str1 = "";
-			var i = 0;
-			for (i = 0; i < 4; i++) {
-			dataToSend = `${newsResp.articles[i].title}\n ${newsResp.articles[i].description}\n URLs Address is:\n ${newsResp.articles[i].url}`;
-			str1 +=  dataToSend;
-			};
+			let dataToSend2 = "";
+			let dataToSend3 = "";
+			dataToSend1 = `${newsResp.articles[0].title}\n ${newsResp.articles[0].description}\n URLs Address is:\n ${newsResp.articles[0].url}`;
+			dataToSend2 = `${newsResp.articles[1].title}\n ${newsResp.articles[1].description}\n URLs Address is:\n ${newsResp.articles[1].url}`;
+			dataToSend3 = `${newsResp.articles[2].title}\n ${newsResp.articles[2].description}\n URLs Address is:\n ${newsResp.articles[2].url}`;
+			str1 = dataToSend1 + dataToSend2 + dataToSend3;
 			console.log(str1)
             return res.json({
                 speech: str1,
-                displayText: dataToSend,
+                displayText: str1,
                 source: 'get-movie-details'
             });
         });
