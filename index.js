@@ -14,10 +14,10 @@ server.use(bodyParser.urlencoded({
 server.use(bodyParser.json());
 
 server.post('/get-movie-details', (req, res) => {
-	const dia_action = req.body.result.action;
+	var dia_action = req.body.result.action;
 	
-	
-	if (dia_action = "news.search") {
+	console.log(dia_action);
+	if (dia_action == "news.search") {
 		
     const category = req.body.result.parameters.category;
 	console.log(category);
@@ -41,11 +41,16 @@ server.post('/get-movie-details', (req, res) => {
         responseFromAPI.on('end', () => {
             const newsResp = JSON.parse(completeResponse);
             let dataToSend = geoCountry === 'MS' ? `I don't have the required info on that. Here's some info on 'The Godfather' instead.\n` : '';
-            console.log("success have article");
+            //console.log("success have article");
+			let str1 = "";
+			var i = 0;
+			for (i = 0; i < 4; i++) {
 			dataToSend = `${newsResp.articles[1].title}\n ${newsResp.articles[1].description}\n URLs Address is:\n ${newsResp.articles[1].url}`;
-			console.log()
+			str1 +=  dataToSend;
+			};
+			console.log(str1)
             return res.json({
-                speech: dataToSend,
+                speech: str1,
                 displayText: dataToSend,
                 source: 'get-movie-details'
             });
@@ -58,7 +63,7 @@ server.post('/get-movie-details', (req, res) => {
         });
     });
 	//--------------------
-	} else if (dia_action = "action.movie") {
+	} else if (dia_action == "action.movie") {
 	
 	
 	
