@@ -45,7 +45,7 @@ server.post('/get-movie-details', (req, res) => {
 			let str1 = "";
 			var i = 0;
 			for (i = 0; i < 4; i++) {
-			dataToSend = `${newsResp.articles[1].title}\n ${newsResp.articles[1].description}\n URLs Address is:\n ${newsResp.articles[1].url}`;
+			dataToSend = `${newsResp.articles[i].title}\n ${newsResp.articles[i].description}\n URLs Address is:\n ${newsResp.articles[i].url}`;
 			str1 +=  dataToSend;
 			};
 			console.log(str1)
