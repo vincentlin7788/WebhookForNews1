@@ -15,10 +15,12 @@ server.use(bodyParser.json());
 
 server.post('/get-movie-details', (req, res) => {
 	var dia_action = req.body.result.action;
-	
+	var dia_source = req.body.result.parameters.source;
 	console.log(dia_action);
+	
 	if (dia_action == "news.search") {
 		
+	if (dia_source == null) {
     const category = req.body.result.parameters.category;
 	console.log(category);
     //const geoCountry = req.body.result.contexts[0].parameters.geo-country.original
@@ -33,6 +35,21 @@ server.post('/get-movie-details', (req, res) => {
 
     //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
     const reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?country=${geoCountryCode}&category=${category}&apikey=${API_KEY}`);
+	} else {
+		
+    const geoCountry = "";
+	console.log(geoCountry);
+
+
+
+    //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
+    const reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?sources=${dia_source}&apikey=${API_KEY}`);
+
+	
+	};
+	
+	
+	
     http.get(reqUrl, (responseFromAPI) => {
         let completeResponse = '';
         responseFromAPI.on('data', (chunk) => {
