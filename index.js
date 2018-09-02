@@ -21,7 +21,7 @@ server.post('/get-movie-details', (req, res) => {
 	if (dia_action == "news.search") {
     const geoCountry = req.body.result.parameters["geo-country"];
 
-	if (dia_source == "") {
+	if (dia_source == "" || dia_source == "The News") {
     const category = req.body.result.parameters.category;
 	console.log(category);
     //const geoCountry = req.body.result.contexts[0].parameters.geo-country.original
