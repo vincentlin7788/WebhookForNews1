@@ -20,7 +20,7 @@ server.post('/get-movie-details', (req, res) => {
 	
 	if (dia_action == "news.search") {
     const geoCountry = req.body.result.parameters["geo-country"];
-    
+
 	if (dia_source == "") {
     const category = req.body.result.parameters.category;
 	console.log(category);
@@ -42,9 +42,10 @@ server.post('/get-movie-details', (req, res) => {
 	console.log(geoCountry);
     console.log(dia_source);
 
-
+    const sourcemap = {"BBC":"bbc-news","Google News":"google-news","Time":"time","CNN news":"cnn"};
+    const dia_source_aftMap = sourcemap[dia_source];
     //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
-    var reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?sources=${dia_source}&apikey=${API_KEY}`);
+    var reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?sources=${dia_source_aftMap}&apikey=${API_KEY}`);
     //
     console.log(reqUrl);
 	
