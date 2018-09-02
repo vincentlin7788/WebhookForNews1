@@ -19,12 +19,13 @@ server.post('/get-movie-details', (req, res) => {
 	console.log(dia_action);
 	
 	if (dia_action == "news.search") {
-		
-	if (dia_source == null) {
+    const geoCountry = req.body.result.parameters["geo-country"];
+    
+	if (dia_source == "") {
     const category = req.body.result.parameters.category;
 	console.log(category);
     //const geoCountry = req.body.result.contexts[0].parameters.geo-country.original
-    const geoCountry = req.body.result.parameters["geo-country"];
+    
 	console.log(geoCountry);
 	const countrymap = {"United States of America":"us","Germany":"de","China":"cn","United Kingdom of Great Britain and Northern Ireland":"GB"};
 	const geoCountryCode = countrymap[geoCountry];
@@ -34,21 +35,22 @@ server.post('/get-movie-details', (req, res) => {
 
 
     //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
-    const reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?country=${geoCountryCode}&category=${category}&apikey=${API_KEY}`);
+    var reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?country=${geoCountryCode}&category=${category}&apikey=${API_KEY}`);
 	} else {
 		
-    const geoCountry = "";
+    const geoCountry = req.body.result.parameters["geo-country"];
 	console.log(geoCountry);
-
+    console.log(dia_source);
 
 
     //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movies ? req.body.result.parameters.Movies : 'The Godfather';
-    const reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?sources=${dia_source}&apikey=${API_KEY}`);
-
+    var reqUrl = encodeURI(`http://newsapi.org/v2/top-headlines?sources=${dia_source}&apikey=${API_KEY}`);
+    //
+    console.log(reqUrl);
 	
 	};
 	
-	
+	console.log(reqUrl);
 	
     http.get(reqUrl, (responseFromAPI) => {
         let completeResponse = '';
